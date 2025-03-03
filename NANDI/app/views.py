@@ -117,7 +117,7 @@ def Booking_list(request):
 # booking add
 @login_required(login_url="login")
 def Booking_add(request):
-        try:
+    try:
         if request.method == 'POST':
             form = Booking_data(request.POST)
             form1 =billing_m()
