@@ -1,0 +1,113 @@
+{% extends "Main/index.html" %}
+{% block content %} 
+<header class="page-title-bar">
+    <div class="d-md-flex align-items-md-start">
+        <h1 class="page-title mr-sm-auto">MANAGER PAYMENT</h1>
+    </div>
+</header>
+<div class="card card-fluid">
+    <h6 class="card-header"> PAYMENT DETAILS </h6>
+    <div class="card-body">
+
+        <form method="post" id="manage-estimate">
+            {% csrf_token %}
+            <div class="form-row">
+                <input type="hidden" name="id">
+
+                <div class="col-md-6 mb-3">
+
+                    <label for="date" class="control-label">Date</label>
+                    <input type="date" name="date" id="date" value="{{update.date.value}}" cols="30" rows="2" class="form-control"
+                         placeholder="Enter Manager Name">
+                    </input>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="phone_no">Manager Name</label>
+                    <input
+                        type="text"
+                        name="manager_name"
+                        id="manager_name"
+                        class="form-control"
+                        value="{{update.manager_name.value}}"
+                        placeholder="Enter Phone No" required></input>
+                </div>
+
+            </div>
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="">Remark</label>
+                    <input type="text" name="remark" value="{{update.remark.value}}" id="remark" cols="30" rows="2" class="form-control"
+                        placeholder="Enter Address">
+                    </input>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="">Amount</label>
+                  <input type="text" name="amount" id="amount" value="{{update.amount.value}}" cols="30" rows="2" class="form-control"
+                      placeholder="Enter Address">
+                  </input>
+              </div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary ml-auto" id="save-estimate-btn" form="manage-estimate">Submit</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+
+
+<script>
+    $(document).ready(function() {
+        // Define loading functions
+        function start_load() {
+            $('body').prepend('<div id="preloader"></div>');
+        }
+
+        function end_load() {
+            $('#preloader').fadeOut('fast', function() {
+                $(this).remove();
+            });
+        }
+
+        // Bind form submit event
+        {% comment %} $('#manage-estimate').on('submit', function(e) {
+            e.preventDefault(); // Prevent default form submission
+
+            start_load();
+            $.ajax({
+                url: 'ajax.php?action=save_manager',
+                data: new FormData(this),
+                cache: false,
+                contentType: false,
+                processData: false,
+                method: 'POST',
+                success: function(resp) {
+                    if (resp == 1) {
+                        toastr.success('Data successfully saved');
+                        setTimeout(function() {
+                            location.href = 'index.php?page=manager_list';
+                        }, 2000);
+                    } else {
+                        $('#msg').html('<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> An error occurred</div>');
+                    }
+                    end_load();
+                },
+                error: function(xhr) {
+                    console.error('Error:', xhr);
+                    toastr.error('An error occurred while processing the request.');
+                    end_load();
+                }
+            }); {% endcomment %}
+        });
+    });
+</script>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+{% endblock content %}

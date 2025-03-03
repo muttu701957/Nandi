@@ -1,0 +1,67 @@
+{% extends "Main/index.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'assets/stylesheets/ledger_view.css' %}">
+<BODY>
+  <div class="card card-fluid p-4">
+    <div class="reciept-page">
+      <div class="header">
+        <DIV class="row" id="head-address">
+          <div class="col-sm-4">
+            <img src="{% static 'assets/images/download.png' %}" alt="" srcset="" height="155px" width="200 px">
+          </div>
+          <div class="address col-sm-7 p-4">
+            <center><h1 id="h1">BANGLORE REALESTATE</h1>
+                <h3>{{ payledglist.info.name }}</h3>
+            <h5>{{ payledglist.info.p_name }}</h5></center>
+          </p></div>
+          </div>
+        </DIV>
+        <hr>
+        <div class="table1">
+            <table>
+                <thead>
+                    <tr>
+                        <th>PLOT / FLAT NO.</th>
+                        <th>AREA (SQ.FT)</th>
+                        <th>RATE</th>
+                        <th>TOTAL AMOUNT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="background-color: white;">{{payledglist.info.flat}}</td>
+                        <td style="background-color: white;">{{payledglist.info.sqft}}</td>
+                        <td style="background-color: white;">{{payledglist.info.rate}}</td>
+                        <td style="background-color: white;">{{payledglist.info.tamount}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="table2">
+            <center><h2>PAYMENT HISTORY</h2></center>
+            <table>
+                <thead>
+                    <tr>
+                        <th>DATE</th>
+                        <th>PAYMENT MODE</th>
+                        <th>RECIEVED AMOUNT</th>
+                        <th>BALACE </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in payledglist.tpl %}
+                    <tr>
+                        <td style="background-color: white;">{{i.dt}}</td>
+                        <td style="background-color: white;">{{i.p_mode}}</td>
+                        <td style="background-color: white;color: green;font-weight: bold;">₹{{i.book_amt}}</td>
+                        <td style="background-color: white;color: red;font-weight: bold;">{{i.balance}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+  </div>
+</BODY>
+{% endblock %}  

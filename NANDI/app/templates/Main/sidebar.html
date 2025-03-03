@@ -1,0 +1,235 @@
+<!-- .aside-menu -->
+<div class="aside-menu overflow-hidden">
+    <!-- .stacked-menu -->
+    <nav id="stacked-menu" class="stacked-menu">
+      <!-- .menu -->
+      <ul class="menu">
+        <!-- .menu-item -->
+        <li class="menu-item has-active">
+          <a href="{% url 'home' %}" class="menu-link"><span class="menu-icon fas fa-home"></span> <span class="menu-text">Dashboard</span></a>
+        </li><!-- /.menu-item -->
+        {% if "Accounts" in user.groups.all|join:", " %}
+        <li class="menu-item has-child">
+          <a href="" class="menu-link"><span class=" menu-icon nav-icon far fa-plus-square"></span> <span class="menu-text">Payments  </span> <span class="badge badge-warning"></span></a> <!-- child menu -->
+          <ul class="menu">
+  
+            <li class="menu-item">
+              <a href="{% url "reciept_list" %}" class="menu-link">Receipt List</a>
+            </li>
+            <li class="menu-item">
+              <a href="{% url 'A_list' %}" class="menu-link">Approval</a>
+            </li>
+            <li class="menu-item">
+              <a href="{% url "ledger" %}" class="menu-link">Ledger</a>
+            </li>
+          </ul><!-- /grand child menu -->
+          {% elif "Admin" in user.groups.all|join:", " %}
+          <li class="menu-item has-child">
+            <a href="" class="menu-link"><span class=" menu-icon nav-icon fas fa-user"></span> <span class="menu-text">Customer</span> <span class="badge badge-warning"></span></a> <!-- child menu -->
+            <ul class="menu">
+    
+              <li class="menu-item">
+                <a href="{% url 'customer_list' %}" class="menu-link">Customer List</a>
+              </li>
+            </ul>
+          </li>
+    
+          <li class="menu-item has-child">
+            <a href="" class="menu-link"><span class=" menu-icon nav-icon fas fa-book"></span> <span class="menu-text">Booking</span> <span class="badge badge-warning"></span></a> <!-- child menu -->
+            <ul class="menu">
+    
+              <li class="menu-item">
+                <a href="{% url 'Booking_list' %}" class="menu-link">Booking List</a>
+              </li>
+    
+    
+            </ul><!-- /grand child menu -->
+          </li>  
+          <li class="menu-item has-child">
+            <a href="" class="menu-link"><span class=" menu-icon nav-icon far fa-plus-square"></span> <span class="menu-text">Payments  </span> <span class="badge badge-warning"></span></a> <!-- child menu -->
+            <ul class="menu">
+    
+              <li class="menu-item">
+                <a href="{% url "reciept_list" %}" class="menu-link">Receipt List</a>
+              </li>
+              <li class="menu-item">
+                <a href="{% url 'A_list' %}" class="menu-link">Approval</a>
+              </li>
+              <li class="menu-item">
+                <a href="{% url "ledger" %}" class="menu-link">Ledger</a>
+              </li>
+            </ul><!-- /grand child menu -->
+          </li>
+          <!-- .menu-item -->
+          <li class="menu-item has-child">
+            <a href="" class="menu-link"><span class=" menu-icon nav-icon fas fa-search"></span> <span class="menu-text">Follow Up</span> <span class="badge badge-warning"></span></a> <!-- child menu -->
+            <ul class="menu">
+    
+              <li class="menu-item">
+                <a href="{% url 'follow_up' %}" class="menu-link">Follow Up Details</a>
+              </li>
+    
+    
+            </ul><!-- /grand child menu -->
+          </li>
+  
+          <li class="menu-item has-child">
+            <a href="" class="menu-link"><span class=" menu-icon nav-icon fas fa-percent"></span> <span class="menu-text">Incentive</span> <span class="badge badge-warning"></span></a> <!-- child menu -->
+            <ul class="menu">
+    
+              <li class="menu-item">
+                <a href="{% url "incetive_executive" %}" class="menu-link">Excutive List</a>
+              </li>
+    
+              <li class="menu-item">
+                <a href="{% url "incetive_manager" %}" class="menu-link">Manager List</a>
+              </li>
+    
+    
+              <li class="menu-item">
+                <a href="{% url "incentive_tellicaller" %}" class="menu-link">Telicaller List</a>
+              </li>
+    
+    
+            </ul><!-- /grand child menu -->
+          </li>
+          <li class="menu-item has-child">
+            <a href="" class="menu-link"><span class=" menu-icon nav-icon fas fa-paper-plane"></span> <span class="menu-text">Agreement</span> <span class="badge badge-warning"></span></a> <!-- child menu -->
+            <ul class="menu">
+    
+              <li class="menu-item">
+                <a href="{% url "nandi_plot" %}" class="menu-link">Nandi Plot</a>
+              </li>
+    
+              <li class="menu-item">
+                <a href="{% url "nandi_flat" %}" class="menu-link">Nandi Flat</a>
+              </li>
+    
+    
+            </ul><!-- /grand child menu -->
+          </li>
+          <li class="menu-item has-child">
+            <a href="" class="menu-link"><span class=" menu-icon nav-icon fas fa-phone"></span> <span class="menu-text">Call Back</span> <span class="badge badge-warning"></span></a> <!-- child menu -->
+            <ul class="menu">
+    
+              <li class="menu-item">
+                <a href="{% url 'call_back' %}" class="menu-link">Call Back</a>
+              </li>
+    
+    
+            </ul><!-- /grand child menu -->
+          </li>
+    
+          <li class="menu-item has-child">
+            <a href="#" class="menu-link"><span class="menu-icon nav-icon fa fa-database"></span> <span class="menu-text"> Store Master</span></a> <!-- child menu -->
+            <ul class="menu">
+              <li class="menu-item">
+                <a href="{% url "project_list" %}" class="menu-link">Project List</a>
+              </li>
+    
+              <li class="menu-item">
+                <a href="{% url "ex_list" %}" class="menu-link">Excutive List</a>
+              </li>
+    
+              <li class="menu-item">
+                <a href="{% url "m_list" %}" class="menu-link">Manager List</a>
+              </li>
+    
+    
+              <li class="menu-item">
+                <a href="{% url "t_list" %}" class="menu-link">Telicaller List</a>
+              </li>
+    
+            </ul><!-- /child menu -->
+          </li>
+
+          <li class="menu-item has-child">
+            <a href="" class="menu-link"><span class=" menu-icon nav-icon fas fa-list"></span> <span class="menu-text">Reports</span> <span class="badge badge-warning"></span></a> <!-- child menu -->
+            <ul class="menu">
+    
+              <li class="menu-item">
+                <a href="{% url 'report_gallary' %}" class="menu-link">Report</a>
+              </li>
+    
+    
+            </ul><!-- /grand child menu -->
+          </li>
+          <!-- /.menu-item -->
+           {% else %}
+           <li class="menu-item has-child">
+            <a href="" class="menu-link"><span class=" menu-icon nav-icon fas fa-user"></span> <span class="menu-text">Customer</span> <span class="badge badge-warning"></span></a> <!-- child menu -->
+            <ul class="menu">
+    
+              <li class="menu-item">
+                <a href="{% url 'customer_list' %}" class="menu-link">Customer List</a>
+              </li>
+            </ul>
+          </li>
+    
+          <li class="menu-item has-child">
+            <a href="" class="menu-link"><span class=" menu-icon nav-icon fas fa-book"></span> <span class="menu-text">Booking</span> <span class="badge badge-warning"></span></a> <!-- child menu -->
+            <ul class="menu">
+    
+              <li class="menu-item">
+                <a href="{% url 'Booking_list' %}" class="menu-link">Booking List</a>
+              </li>
+    
+    
+            </ul><!-- /grand child menu -->
+          </li>  
+          <li class="menu-item has-child">
+            <a href="" class="menu-link"><span class=" menu-icon nav-icon far fa-plus-square"></span> <span class="menu-text">Payments  </span> <span class="badge badge-warning"></span></a> <!-- child menu -->
+            <ul class="menu">
+    
+              <li class="menu-item">
+                <a href="{% url "reciept_list" %}" class="menu-link">Receipt List</a>
+              </li>
+            </ul><!-- /grand child menu -->
+          </li>
+          <li class="menu-item has-child">
+            <a href="#" class="menu-link"><span class="menu-icon nav-icon fa fa-database"></span> <span class="menu-text"> Store Master</span></a> <!-- child menu -->
+            <ul class="menu">
+              <li class="menu-item">
+                <a href="{% url "project_list" %}" class="menu-link">Project List</a>
+              </li>
+    
+              <li class="menu-item">
+                <a href="{% url "ex_list" %}" class="menu-link">Excutive List</a>
+              </li>
+    
+              <li class="menu-item">
+                <a href="{% url "m_list" %}" class="menu-link">Manager List</a>
+              </li>
+    
+    
+              <li class="menu-item">
+                <a href="{% url "t_list" %}" class="menu-link">Telicaller List</a>
+              </li>
+    
+            </ul><!-- /child menu -->
+          {% endif %}
+        <!-- .menu-item -->
+        
+        <!-- .menu-item -->
+  
+      </ul><!-- /child menu -->
+      </li><!-- /.menu-item -->
+      </ul><!-- /.menu -->
+    </nav><!-- /.stacked-menu -->
+  </div><!-- /.aside-menu -->
+  <!-- Skin changer -->
+  <footer class="aside-footer border-top p-2">
+    <button class="btn btn-light btn-block text-primary" data-toggle="skin"><span class="d-compact-menu-none">Night mode</span> <i class="fas fa-moon ml-1"></i></button>
+  </footer><!-- /Skin changer -->
+  </div><!-- /.aside-content -->
+  </aside><!-- /.app-aside -->
+  <!-- .app-main -->
+  <main class="app-main">
+    <!-- .wrapper -->
+    <div class="wrapper">
+      <!-- .page -->
+      <div class="page">
+        <!-- .page-inner -->
+        <div class="page-inner">
+          <!-- .page-title-bar -->
+

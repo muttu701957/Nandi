@@ -1,0 +1,35 @@
+BODY{
+    background-color: #007BFF;
+}
+table{
+    width: 100%;
+    border: solid 1px grey;
+}
+th{
+    background-color: rgb(69, 133, 201);
+    color: white;
+    text-align: center;
+    padding: 10px 15px;
+    border: solid 1px #ccc;
+}
+td{
+    text-align: center;
+    padding: 10px 15px;
+    background-color: green;
+}
+hr{
+    margin-bottom: 25px ;
+    border-bottom:2px solid #007BFF ;
+}
+.table1{
+    padding-bottom:30px ;
+}
+#h1{
+    color: brown;
+}
+.header{
+    padding:10px;
+  }
+.account{
+    color: red;
+}

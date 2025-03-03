@@ -1,0 +1,69 @@
+    {% extends "Main/index.html" %}
+    {% load static %}
+    {% block content %}
+    <link rel="stylesheet" href="{% static 'assets/stylesheets/reportg.css' %}">
+    <div class="gallary-page">
+        <div class="row justify-content-center mb">
+            <div class="col-sm-4">
+                <a href="{% url 'customer_report' %}" id="card-btn">
+                    <div class="card card-fluid pl-1 pr-1" id="card1">
+                        <div class="logo"><i class='fas fa-user-tie' style='font-size:40px'></i></div>
+                        <h4>Customer Report</h4>
+                        <p>View detailed information about our valued Customer, including their contact details, project history, and other relevant data.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-4">
+                <a href="{% url 'Booking_report' %}" id="card-btn">
+                    <div class="card card-fluid p-2">
+                        <div class="logo"><i class='fas fa-briefcase' style='font-size:40px'></i></div>
+                        
+                        <h4>Booking Report</h4>
+                        <p>Comprehensive reports on Booking Report, including legal case tracking, property valuations, and transaction history related to legal matters.
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-4">
+                <a href="{% url 'payment_report' %}" id="card-btn">
+                    <div class="card card-fluid p-2">
+                        <div class="logo"><i class='fas fa-chart-line' style='font-size:40px'></i></div>
+                        <h4>Payment Report</h4>
+                        <p>Track and analyze your Payment, including completed tasks, time spent on projects, and overall productivity, all in one comprehensive report.
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <a href="{% url 'Executve_report' %}" id="card-btn">
+                    <div class="card card-fluid ">
+                        <div class="logo"><i class='fas fa-chart-line' style='font-size:40px'></i></div>
+                        <h4>Executive Report</h4>
+                        <p>The Executive Report provides a comprehensive overview of key business activities, including completed tasks, pending items, deadlines, and progress tracking, helping executives make informed decisions efficiently.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-4">
+                <a href="{% url 'manager_report' %}" id="card-btn">
+                    <div class="card card-fluid pb-4">
+                        <div class="logo"><i class='far fa-plus-square' style='font-size:40px'></i></div>
+                        <h4>Manager Report</h4>
+                        <p>The Manager Report provides a detailed analysis of financial transactions, balance summaries, and business performance, helping managers make informed decisions efficiently.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-4">
+                <a href="{% url 'Tellicaller_report' %}" id="card-btn">
+                    <div class="card card-fluid pb-4">
+                        <div class="logo"><i class='fas fa-user-tie' style='font-size:40px'></i></div>
+                        <h4>Telecaller Report</h4>
+                        <p>Generate detailed reports on your accounts, including transaction history, balance summaries, and financial performance analysis.
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

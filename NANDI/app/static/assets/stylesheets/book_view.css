@@ -1,0 +1,96 @@
+    .card{
+        padding:40px 40px 40px;
+        border:solid 1px lightgrey;
+    }
+    #subhead{
+      text-align:center
+    }
+    .appno {
+      font-size: 20px;
+    }
+    .tit{
+      color:#005A9C ;
+      font-family: "Helvetica",Sans-serif;
+      padding-top:50px;
+    }
+    Table,th,td {
+      text-align:center;
+      border:solid 2px lightgrey;
+      padding:20px;
+    }
+    hr{
+      border:solid 1px red;
+    }
+    .Declaration{
+      font-weight:bold;
+      font-size: 16.5px;
+    }
+    .card{
+      font-weight:bold;
+      font-size: large;
+    }
+    col{
+      height:20px;
+    }
+  
+    table{
+      font-weight:bold;
+    }
+    @media print {
+      /* Ensure full-width content */
+      body {
+          margin: 0;
+          padding: 0;
+          width: 100%;
+      }
+  
+      /* Remove unnecessary margins */
+      .card {
+          margin: 0;
+      }
+  
+      /* Center titles and section headings */
+      .page-title, #subhead, .tit {
+          text-align: center !important;
+      }
+  
+      /* Adjust form inputs to align properly */
+      input {
+          width: 100%;
+          background: none !important;
+          text-align: left;
+      }
+  
+      /* Adjust table alignment */
+      table {
+          width: 100%;
+          border-collapse: collapse;
+      }
+      th, td {
+          text-align: center;
+          padding: 10px;
+          border: 1px solid #000;
+      }
+  
+      /* Ensure proper alignment of signatures */
+      .row {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+      }
+      .row div {
+          width: 33%;
+          text-align: center;
+      }
+      .page-break {
+          page-break-before: always;
+      }
+      #card1{
+        margin-top:100px;
+        padding-top:71px;
+      }
+      #hide{
+        display:none
+      }
+  }
+  

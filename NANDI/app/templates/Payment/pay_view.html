@@ -1,0 +1,69 @@
+{% extends "Main/index.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'assets/stylesheets/pay_view.css' %}">
+
+<BODY>
+  <div class="card card-fluid p-4">
+    <div class="reciept-page">
+      <div class="header">
+        <DIV class="row" id="head-address">
+          <div class="col-sm-5">
+            <img src="{% static 'assets/images/download.png' %}" alt="" srcset="" height="170px" width="208px">
+          </div>
+          <div class="address col-sm-7">
+            <p><span class="address-span">Office : </span>Shop No 4 Second Flour Steller Mall PB Road JG College Of Commerce Beside Vidyanagar Hubballi Karnataka 580-021</p>
+            <p><span class="address-span">email : </span>info@shreenandiproperties.com</p>
+            <p><span class="address-span">Website : </span>info@shreenandiproperties.com</p>
+          </p></div>
+          </div>
+        </DIV>
+        <hr>
+        <div>
+          <div class="recipts">
+            <div class="row">
+              <div class="col-sm-4"><span class="label-feild">reciept No</span> : 5</div>
+              <div class="col-sm-4"><span class="label-feild">Date</span> : 5</div>
+              <div class="col-sm-4"><span class="label-feild">Contact No</span> : 5</div>
+            </div>
+          </div>
+            <hr>
+          <div class="recipts">
+            <div class="row">
+              <div class="col-sm-8"><span class="label-feild">Project Name</span> : 5</div>
+              <div class="col-sm-3"><span class="label-feild">Flat/plot No</span> : 5</div>
+            </div>
+            </div>
+            <hr>
+          <div class="recipts">
+            <div>
+              <label><span class="label-feild">Received with thanks from</span> : </label>
+            </div>
+            </div>
+            <hr>
+          <div class="recipts">
+            <div>
+              <label><span class="label-feild">The sum of Rupees</span> : </label>
+            </div>
+            </div>
+            <hr>
+          <div class="recipts">
+            <div>
+              <label><span class="label-feild">by Cash / Cheque / DD No.</span> : </label>
+            </div>
+          </div>
+          <hr>
+        </div>
+      <div class="output-box">
+        <input type="text" readonly>
+      </div>
+      <div class="reciept-footer">
+        <div class="row">
+          <div class="col-sm-10"><h2>RECEIPT</h2></div>
+          <div class="col-sm-2"><label>Accounts Dept<br>(Signature)</label></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</BODY>
+{% endblock %}

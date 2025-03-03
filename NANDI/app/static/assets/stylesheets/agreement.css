@@ -1,0 +1,76 @@
+    .Container{
+        padding-top:45px;
+        padding-right:20PX;
+        padding-left:20PX;
+        padding-bottom:auto;
+        font-family: "Arial", Sans-serif;
+    }
+    hr{
+        padding-bottom:10px;
+    }
+    hr{
+        border-top: 1px solid Black;
+      }
+    .page-header{
+        text-align:center;
+        padding: 10px 10px 0px;
+    }
+    .page-header h1{
+        padding: 0px 10px 38px;
+    }
+    .page-header h5{
+        line-height: 1.5;
+        padding-bottom:60px;
+        font-weight:normal;
+    }
+    .sub-container-1{
+        word-spacing: 3px;
+        font-size:19px;
+        line-height: 2;
+        padding-top:35px;
+        padding-bottom:15px;
+    }
+    .sub-container-2{
+        word-spacing: 3px;
+        font-size:19px;
+        line-height: 2;
+        padding-top:0px;
+        padding-bottom:15px;
+    }
+    .sub-container-3{
+        word-spacing: 3px;
+        font-size:19px;
+        line-height: 2;
+        padding-top:0px;
+        padding-bottom:15px;
+    }
+    .sub-container-1 p{
+        padding-bottom:25px}
+    .span-2{
+        font-weight:Bold;
+    }
+    .card{
+        border:solid 1px lightgrey;        
+    }
+    ol{
+        padding-bottom:25px
+    }
+    @media print {
+        .pagebreake{page-break-before: always;}
+        #card1,#card2{margin-top:100px;}
+        Table{padding:10PX  20PX 10PX;}
+        footer{display:none}
+    }
+    table,th,td {
+        text-align:center;
+        border:solid 2px lightgrey;
+        padding:10px;
+      }
+      th,td {
+        text-align:center;
+        border:solid 2px lightgrey;
+        padding:10px 30px 10px;
+      }
+      .span-3{
+        font-weight:bold;
+      }

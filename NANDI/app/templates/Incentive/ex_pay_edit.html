@@ -1,0 +1,91 @@
+{% extends "Main/index.html" %}
+{% block content %} 
+<header class="page-title-bar">
+    <div class="d-md-flex align-items-md-start">
+        <h1 class="page-title mr-sm-auto">EXECUTIVE PAYMENT </h1>
+    </div>
+</header>
+<style>
+  #page-title{
+    color:#004687;
+    padding-left:10px;
+  }
+</style>
+<div class="card card-fluid">
+    <h6 class="card-header"> PAYMENT DETAILS</h6>
+    <div class="card-body">
+      <h1 class="page-title mr-sm-auto pb-3" id="page-title">EXECUTIVE PAYMENT </h1>
+        <form method="post" id="manage-estimate"class="payment-form p-2">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+
+
+                    <label for="">Date</label>
+                    <input type="date" name="date" id="date" class="form-control" value="{{update.date.value}}"
+                         placeholder="Enter Executive Name">
+                    </input>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="phone_no">Executive Name</label>
+                    <input
+                        type="text"
+                        name="ex_name"
+                        id="ex_name"
+                        value="{{update.ex_name.value}}"
+                        class="form-control"
+                        title="Please enter exactly 10 digits"
+                        required placeholder="Enter Phone No">
+                </div>
+
+            </div>
+            <div class="form-row">
+
+                <div class="col-md-6 mb-3">
+
+                    <label for="">Remark</label>
+                    <input type="text" name="remark" id="remark" cols="30" rows="2" class="form-control" value="{{update.remark.value}}"
+                     placeholder="Enter Address">
+                    </input>
+                </div>
+                <div class="col-md-6 mb-3">
+
+                  <label for="">Amount</label>
+                  <input type="text" name="amount" id="amount" value="{{update.amount.value}}" cols="30" rows="2" class="form-control"
+                   placeholder="Enter Address">
+                  </input>
+              </div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary ml-auto" id="save-estimate-btn" form="manage-estimate">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function() {
+        // Define loading functions
+        function start_load() {
+            $('body').prepend('<div id="preloader"></div>');
+        }
+
+        function end_load() {
+            $('#preloader').fadeOut('fast', function() {
+                $(this).remove();
+            });
+        }
+
+        // Bind form submit event
+    
+    });
+</script>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+{% endblock content %}

@@ -1,0 +1,118 @@
+{% extends "Main/index.html" %}
+{% block content %}
+<header class="page-title-bar">
+    <div class="d-md-flex align-items-md-start">
+        <h1 class="page-title mr-sm-auto">DOWN PAYMENT BILL </h1>
+    </div>
+</header>
+
+<div class="card card-fluid">
+    <h6 class="card-header"> Payment</h6>
+    <div class="card-body">
+
+        <form method="post" id="manage-estimate">
+            {% csrf_token %}
+            <div class="form-row">
+                <input type="hidden" name="id" value="">
+                <input type="hidden" name="credit" id="credit" cols="30" rows="2" class="form-control"
+                    value="credit" readonly>
+
+                <div class="col-md-6 mb-3">
+                    <label for="input01">Date</label>
+                    <input type="date" class="form-control" value="{{ form.dt.value }}" id="dt" name="dt" placeholder="Enter Date"readonly>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="input03">Project Name</label><input type="text" class="form-control" value="{{ form.fname.value }}" id="fname" name="fname" placeholder="Enter Project Name" readonly>
+                </div>
+            </div>
+
+            <div class="form-row">
+
+                <div class="col-md-6 mb-3">
+                    <label for="input03">Project Name</label> <input type="text" readonly class="form-control" value="{{ form.p_name.value }}" id="p_name" name="p_name" placeholder="Enter Project Name" >
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="input03">Flat/Plot</label>
+                    <input type="text" class="form-control" id="flt" name="flt" readonly value="{{ form.flt.value }}" placeholder="Enter Flat/Plot" >
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="input04">Application No.</label>
+                    <input type="text" class="form-control" id="bill_no" name="bill_no" readonly value="{{ form.bill_no.value }}" placeholder="Enter Application No.">
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="input04">Phone/Whatsapp No.</label>
+                    <input type="text" class="form-control" id="ph" value="{{ form.ph.value }}" readonly placeholder=" Enter Phone/Whatsapp No." name="ph"  >
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="input03">Sale Executive</label> <input type="text" value="{{ form.executive_name.value }}" class="form-control" readonly id="executive_name" name="executive_name" placeholder="Enter Sale Executive">
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="input04">Manager</label> <input type="text" value="{{ form.manager_name.value }}" class="form-control" id="manager_name" readonly name="manager_name" placeholder="Enter Manager">
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="input03">Telicaller</label> <input type="text" value="{{ form.tel_name.value }}" class="form-control" id="tel_name" name="tel_name" readonly placeholder="Enter Telicaller">
+                </div>
+
+                <div class="col-md-6 mb-3">
+                  <label for="input03">Rate</label> <input type="text" class="form-control" value="{{ form.rate.value }}" id="rate" name="rate" readonly placeholder="Enter Telicaller">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="input03">Total Amount</label> <input type="text" readonly class="form-control" value="{{ form.tamount.value }}" id="t_amount" name="tamount" placeholder="Enter Total Amount">
+            </div>
+                <div class="col-md-6 mb-3">
+                    <label for="input04">Mode Of Payment</label> <input type="text" class="form-control" id="p_mode" value="{{ form.p_mode.value }}" name="p_mode" placeholder="Enter Mode Of Payment">
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="input03">Details</label> <input type="text" class="form-control" name="paddress" placeholder="Enter Details">
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="input04">Amount</label>
+                    <input type="text" class="form-control" id="book_amt" name="book_amt" placeholder="Enter Amount" >
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="apartmentLayout">Next Payment Date</label>
+
+                    <input type="date" class="form-control" id="nxt_dt" value="{{ form.nxt_dt.value }}" readonly name="nxt_dt" placeholder="Enter Amount" >
+
+                </div>
+        </form>
+    </div>
+    </form>
+    <div class="btn-submit"><center>
+      <button type="submit" class="btn btn-Success" id="save-estimate-btn" name="status" value="Approved" form="manage-estimate">Approve</button>
+        <button type="submit" class="btn btn-danger" id="save-estimate-btn" name="status" value="Decline" form="manage-estimate">Decline</button></center>
+    </div>
+</div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        // Define loading functions
+        function start_load() {
+            $('body').prepend('<div id="preloader"></div>');
+        }
+
+        function end_load() {
+            $('#preloader').fadeOut('fast', function() {
+                $(this).remove();
+            });
+        }
+
+        // Bind form submit event
+
+    });
+</script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+{% endblock content %}

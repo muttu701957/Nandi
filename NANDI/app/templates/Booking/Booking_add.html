@@ -1,0 +1,435 @@
+{% extends "Main/index.html" %}
+{% load static %}
+{% block content %}
+<header class="page-title-bar">
+    <div class="d-md-flex align-items-md-start">
+        <h1 class="page-title mr-sm-auto">SITE BOOKING APPLICATION </h1>
+    </div>
+</header>
+
+<div class="card card-fluid">
+    <h6 class="card-header"> New Booking </h6>
+    <div class="card-body">
+
+        <form method="post" id="manage-estimate">
+            {% csrf_token %}
+            <div class="form-row">
+                <input type="hidden" name="id" value="">
+
+
+                <div class="col-md-6 mb-3">
+                    <label>Booking Firm</label>
+                    <input type="text" class="form-control" id="df" name="df" required value="NANDI" readonly>
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    <label for="input01"> Booking Date</label>
+                    <input type="date" class="form-control" id="dt" name="dt" placeholder="Enter Date" required >
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="input01">First Name</label>
+                    <select class="form-control" name="fname" id="fname" type="text" onchange="autofetch()" required>
+                        <option value="none">Select Items</option>
+                        {% for i in cust %}
+                        <option value="{{i.fname}}" dataid="{{i.id}}">{{i.fname}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="mname">Middle Name</label> <input type="text" class="form-control" id="mname" name="mname" placeholder="Enter Middle Name"
+                        >
+                </div>
+            </div>
+
+            <div class="form-row">
+
+                <div class="col-md-6 mb-3">
+                    <label for="input03">Last Name </label> <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter Last Name" required>
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    <label for="input03">Phone No/WhatsApp No</label>
+                    <input type="text" class="form-control" id="phone" name="ph" placeholder="Enter Phone No" required maxlength="12" title="Phone number must be exactly 10 digits">
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    <label for="input04">Mail ID</label>
+                    <input type="email" class="form-control" id="email" name="mail" placeholder="Enter Mail ID" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Please enter a valid email address">
+                </div>
+
+
+
+                <div class="col-md-6 mb-3">
+                    <label for="input04">DOB</label>
+                    <input type="date" class="form-control" id="dob" name="dob" required max="<?php echo date('Y-m-d'); ?>">
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    <label for="input03">Occupation</label> <input type="text" class="form-control" id="occupation" name="occupation" placeholder="Enter Occupation">
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="input04">Nominee</label> <input type="text" class="form-control" id="nominee" name="nam" placeholder="Enter Nominee Name">
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="input03">Relationship</label> <input type="text" class="form-control" id="relation" name="relation" placeholder="Enter Relationship">
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="input04">Present Address</label> <input type="text" class="form-control" name="raddress" id="r1address" placeholder="Enter Present Address">
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="input03">Permanent Address</label> <input type="text" class="form-control" id="presentaddress" name="paddress" placeholder="Enter Permanent Address">
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="input04">Aadhaar Number</label>
+                    <input type="text" class="form-control" id="dhaarNumber" name="adhar" placeholder="Enter Aadhaar Number"  maxlength="12" required title="Please enter correct aadhar 12 digits">
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    <label for="input04">Executive</label>
+                    <input type="text" class="form-control" id="exname" name="exname" placeholder="Enter Aadhaar Number"   required title="Please enter correct aadhar 12 digits">
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+                    <label for="input04">Manager</label>
+                    <input type="text" class="form-control" id="maname" name="maname" placeholder="Enter Aadhaar Number"   required title="Please enter correct aadhar 12 digits">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="input04">Telicaller</label>
+                    <input type="text" class="form-control" id="tname" name="tname" placeholder="Enter Aadhaar Number"   required title="Please enter correct aadhar 12 digits">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="input04"> Payment Method</label> <input type="text" class="form-control" id="p_mode" name="p_mode" placeholder="Enter Payment Method">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="input04">Payment Details</label> <input type="text" class="form-control" id="remark" name="remark" placeholder="Enter Payment Details">
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="" class="control-label">Apartment/Layout</label>
+
+                    <select type="text" name="layout" id="layout" cols="30" rows="2" class="form-control" required>
+                        <option value="select">Select Items</option>
+                        <option value="Apartment">Apartment</option>
+                        <option value="layout">Layout</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="input04">Next Payment Date</label> <input type="date" class="form-control" id="nxt_dt" name="nxt_dt" placeholder="Enter Next Paymeny Date" >
+                </div>
+            </div>
+
+            <h6 class="card-header"> Add Property Details</h6>
+            <div class="card-body"></div>
+            <div class="card">
+                <!-- <form action="" id="manage-item"> -->
+                <div class="Table responsive Class">
+                    <table class="table table-bordered responsive" id="parcel-items">
+                        <thead>
+                            <tr>
+                                <th> Project Name</th>
+                                <th> Flat/PlotNo.</th>
+                                <th> Plot(sq.ft)</th>
+                                <th> Rate</th>
+                                <th>Total Amount</th>
+                                <th> Booking Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                {% csrf_token %}
+                                <td>
+                                    <input type="text" name="p_name" id="p_name" value="" class="form-control" required onblur="checkFltExistence(this)" placeholder="Enter Project Name">
+                                
+                                </td>
+                                <td>
+                                    <input type="text" name="flt" id="flt" value="" class="form-control" required onblur="checkFltExistence(this)" placeholder="Enter Flat/Plot">
+                                </td>
+
+
+                                <td><input type="text" name="sqft" id="sqft" value=""
+                                        class="form-control" required placeholder="Enter Plot"></td>
+
+                                <td><input type="text" onchange="calc_t_price(this)" name="rate"
+                                        id="rate" value="" class="form-control" required placeholder="Enter Rate"></td>
+
+                                <td><input type="text" name="tamount" id="tamount" value=""
+                                        class="form-control" onchange="calc_t_price(this)" required placeholder="Enter Total Amount"></td>
+
+                                <td><input type="text" name="book_amt" id="book_amt" value=""
+                                        onchange="calc_t_price(this)" class="form-control" required placeholder="Enter Booking Amount"></td>
+
+                                <td>
+                                    <button class="btn btn-sm btn-danger" type="button"
+                                        onclick="$(this).closest('tr').remove() && calc()" disabled>
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="row">
+                        <!-- <div class="col-md-12 d-flex justify-content-end">
+                                        <button class="btn btn-sm btn-primary bg-gradient-primary" type="button"><i class="fa fa-item"></i> Add Item</button>
+                                    </div> -->
+                    </div>
+
+                    <!-- </form> -->
+                </div>
+            </div>
+        </form>
+    </div>
+    </form>
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary ml-auto" id="save-estimate-btn" form="manage-estimate">Submit</button>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script>
+    $(document).ready(function() {
+        // Define loading functions
+        function start_load() {
+            $('body').prepend('<div id="preloader"></div>');
+        }
+
+        function end_load() {
+            $('#preloader').fadeOut('fast', function() {
+                $(this).remove();
+            });
+        }
+
+        // Bind form submit event
+        {% comment %} $('#manage-estimate').on('submit', function(e) {
+            e.preventDefault(); // Prevent default form submission
+
+            start_load();
+            $.ajax({
+                url: 'ajax.php?action=save_booking',
+                data: new FormData(this),
+                cache: false,
+                contentType: false,
+                processData: false,
+                method: 'POST',
+                success: function(resp) {
+                    if (resp == 1) {
+                        toastr.success('Data successfully saved');
+                        setTimeout(function() {
+                            location.href = 'index.php?page=booking_list';
+                        }, 2000);
+                    } else {
+                        $('#msg').html('<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> An error occurred</div>');
+                    }
+                    end_load();
+                },
+                error: function(xhr) {
+                    console.error('Error:', xhr);
+                    toastr.error('An error occurred while processing the request.');
+                    end_load();
+                }
+            }); {% endcomment %}
+        });
+    });
+</script>
+
+<script>
+    {% comment %} $(document).ready(function() {
+        $('#fname').on('change', function() {
+            var tmp_id = document.getElementById('fname').value;
+            // alert(tmp_id);
+            $.ajax({
+                url: '#',
+                type: 'POST',
+                data: 'tmp_id=' + tmp_id,
+                async: false,
+                success: function(s) {
+                    if (s == 'failed') {
+                        alert("some thing went wrong");
+                    } else {
+                        var name = $.parseJSON(s)
+
+                        $('#mname').val(name.mname);
+                        $('#lname').val(name.lname);
+                        $('#ph').val(name.ph);
+                        $('#raddress').val(name.raddress);
+                        $('#paddress').val(name.paddress);
+                        $('#adhar').val(name.adhar);
+                        $('#relation').val(name.relation);
+                        $('#nam').val(name.nam);
+                        $('#dob').val(name.dob);
+                        $('#occupation').val(name.occupation);
+                        $('#w_no').val(name.w_no);
+                        $('#mail').val(name.mail);
+
+
+                    }
+                }
+            })
+        });
+    }); {% endcomment %}
+</script>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+
+
+
+<script>
+    function calc_t_price(v) {
+        var index = $(v).parent().parent().index();
+        var sqft = document.getElementsByName("sqft")[index].value;
+        //   alert(sqft);
+        var rate = document.getElementsByName("rate")[index].value;
+        var rate = document.getElementsByName("rate")[index].value;
+        //   alert(rate)
+        total = sqft * rate;
+        document.getElementsByName("tamount")[index].value = total;
+
+        calc()
+    }
+</script>
+<!-- SweetAlert2 CSS and JS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.7/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.7/dist/sweetalert2.min.js"></script>
+
+
+
+<script>
+    function checkFltExistence(inputElement) {
+        const fltValue = inputElement.value.trim();
+        const row = inputElement.closest('tr');
+        const pNameInput = row.querySelector('input[name="p_name"]');
+
+        if (!pNameInput) {
+            console.error("Project Name input not found in the same row.");
+            return;
+        }
+
+        const pNameValue = pNameInput.value.trim();
+
+        if (!pNameValue || !fltValue) {
+            Swal.fire({
+                title: 'Missing Input',
+                text: 'Please enter both Project Name and Flat/Plot to check for duplicates.',
+                icon: 'info',
+                confirmButtonText: 'OK'
+            });
+            return;
+        }
+
+        $.ajax({
+            url: 'check_flt.php',
+            type: 'POST',
+            data: {
+                p_name: pNameValue,
+                flt: fltValue
+            },
+            success: function(response) {
+                if (response.trim() === 'exists') {
+                    Swal.fire({
+                        title: 'Duplicate Entry Detected',
+                        html: `<p>The combination of Project Name <strong>${pNameValue}</strong> and Flat/Plot <strong>${fltValue}</strong> already exists. Please enter a unique combination.</p>`,
+                        icon: 'warning',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        inputElement.value = "";
+                        inputElement.focus();
+                    });
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("Error occurred:", error);
+                Swal.fire({
+                    title: 'Error',
+                    text: 'An error occurred while checking for duplicates. Please try again.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            }
+        });
+    }
+</script>
+<script>
+    function autofetch() {
+        var raw =document.getElementById('fname');
+        var value = raw.options[raw.selectedIndex].getAttribute("dataid");
+        var data = [
+        {% for customer in cust %}
+            { "id": "{{ customer.id }}", 
+            "fname": "{{ customer.fname }}",
+            "mname": "{{ customer.mname }}",
+            "lname": "{{ customer.lname }}",
+            "ph": "{{ customer.ph }}",
+            "dob": "{{ customer.dob }}",
+            "email": "{{ customer.email }}",
+            "occupation": "{{ customer.occupation }}",
+            "nam": "{{ customer.nam }}",
+            "relationship": "{{ customer.relation }}",
+            "raddress": "{{ customer.raddress }}",
+            "paddress": "{{ customer.paddress }}",
+            "adhar": "{{ customer.adhar }}",
+         }
+            {% if not forloop.last %}, {% endif %}
+        {% endfor %}
+        ];
+        data.forEach(function(customer) {
+            if(customer.id==value){
+                document.getElementById("mname").value =customer.mname;
+                document.getElementById("lname").value =customer.lname;
+                document.getElementById("phone").value =customer.ph;
+                document.getElementById("email").value =customer.email;
+                document.getElementById("dob").value =customer.dob;
+                document.getElementById("occupation").value =customer.occupation;
+                document.getElementById("nominee").value =customer.nam;
+                document.getElementById("relation").value =customer.relationship;
+                document.getElementById("r1address").value =customer.raddress;
+                document.getElementById("presentaddress").value =customer.paddress;
+                document.getElementById("dhaarNumber").value =customer.adhar;
+            }
+        });
+        if(value=="none"){
+            document.getElementById("mname").value ="";
+            document.getElementById("lname").value ="";
+            document.getElementById("phone").value ="";
+            document.getElementById("email").value ="";
+            document.getElementById("dob").value ="";
+            document.getElementById("occupation").value ="";
+            document.getElementById("nominee").value ="";
+            document.getElementById("relation").value ="";
+            document.getElementById("r1address").value ="";
+            document.getElementById("presentaddress").value ="";
+            document.getElementById("dhaarNumber").value ="";
+        }
+           
+    }
+</script>
+{% endblock %}
+
+
+
+
+
+
+
+

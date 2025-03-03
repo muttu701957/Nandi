@@ -1,0 +1,21 @@
+Accounts
+AccountMaster_23  Acc0unt$Tr0ng!
+MyAccountGuard    Str0ng#P@ss2025
+SafeAccount2025   AcC0unt@2025S3cur
+AccountKeyholder_4    !P@ssw0rd@Acct
+SecureLogin_08    $S3cur3_Acc0unt!
+
+Customer
+john_doe  P@ssw0rd123!
+susan_smith  Cust0m3r$2025
+
+
+
+
+
+
+    
+
+
+
+

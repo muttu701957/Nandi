@@ -1,0 +1,33 @@
+.card{
+    padding:10px;
+}
+.header{
+    padding:27px 18px 9px;
+}
+.header button{
+    padding:5px 15px 5px;
+    background-color: white;
+    border-radius:5px;
+    Border:None;
+    color:grey;
+}
+.header button:hover{
+    background-color:#e5e4e2;
+}
+.header button:focus {
+    outline:None
+}
+.header button:active {
+    background-color:#E1EBEE;
+    color:#1560bd;
+}
+.table {
+    padding:5px;
+}
+.Data-None{
+    text-align:center;
+    color:grey;
+}
+.table-head{
+    font-weight:normal;
+}

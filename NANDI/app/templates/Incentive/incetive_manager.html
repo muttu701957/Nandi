@@ -1,0 +1,320 @@
+{% extends "Main/index.html" %}
+{% block content %} 
+<header class="page-title-bar">
+    <!-- .breadcrumb -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active">
+                <a href="#">
+                    <i class="breadcrumb-icon fa fa-angle-left mr-2"></i>Tables
+                </a>
+            </li>
+        </ol>
+    </nav>
+    <!-- /.breadcrumb -->
+    <div class="row ">
+        <div class="col-6">
+            <!-- title -->
+            <h1 class="page-title">MANAGER LIST</h1>
+            <!-- <p class="text-muted">Resize your browser window to see it in action.</p> -->
+        </div>
+
+        <div class="col-6">
+            <div class="d-flex justify-content-end">
+                <a href="{% url "m_pay_add" %}" class="btn btn-primary"> <i class="bi bi-plus"></i> </a>
+            </div>
+        </div>
+
+    </div>
+    <!-- title -->
+
+</header>
+<!-- /.page-title-bar -->
+
+<!-- .page-section -->
+<div class="page-section">
+    <!-- .card -->
+    <div class="card card-fluid">
+        <!-- .card-body -->
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="dataTables_length" id="dt-responsive_length" style="display: flex; align-items: center; gap: 10px;">
+                        Show
+                        <label for="entriesSelector">
+                            <select name="dt-responsive_length" aria-controls="dt-responsive" class="custom-select" id="entriesSelector" onchange="updateEntries()">
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
+                        </label>
+                        entries
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div id="dt-responsive_filter" class="dataTables_filter">
+                        <label>Search:
+                            <input type="search" class="form-control" placeholder="Type to search" aria-controls="dt-responsive" onkeyup="filterTable()" id="searchInput">
+                        </label>
+                    </div>
+                </div>
+                <table id="dt-responsive" class="table dt-responsive nowrap w-100">
+                    <thead>
+                        <tr>
+                            <!-- <th class="text-center">#</th> -->
+
+                            <th style="width: 30%;font-weight:normal"><center>Manager Name</center></th>
+                            <th style="width: 30%;font-weight:normal"><center>Action</center></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in manager %}
+                            <tr>
+                                <!-- <td class="text-center"><?php echo $i++ ?></td> -->
+
+                                <td><center>{{i.manager_name}}</center></td>
+                                <td>
+                                    <center>
+                                    <a href="{% url "m_pay_edit" i.id %}" class="btn btn-sm btn-icon btn-secondary"><i class="fa fa-pencil-alt"></i> <span class="sr-only">Edit</span></a>
+
+                                    <a href="{% url "m_delete" i.id %}" class="btn btn-sm btn-icon btn-secondary" onclick="save_applications_delete()"><i class="far fa-trash-alt"></i> <span class="sr-only">Remove</span></a>
+                                    </center>
+
+                                </td>
+                            </tr>
+
+                            {% endfor %}
+                    </tbody>
+                </table>
+                <!-- /.table -->
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-6">
+                        <div class="dataTables_info" id="dt-responsive_info" role="status" aria-live="polite">
+                            Showing <span id="startEntry">1</span> to <span id="endEntry">5</span> of <span id="totalEntries">0</span> entries
+                        </div>
+                    </div>
+                    <div class="col-6 d-flex justify-content-end" id="updateEntries">
+                        <div class="dataTables_paginate paging_simple_numbers" id="dt-responsive_paginate">
+                            <ul class="pagination justify-content-center">
+                                <!-- Pagination will be dynamically updated -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <script>
+                    function filterTable() {
+                        const input = document.getElementById('searchInput');
+                        const filter = input.value.toLowerCase();
+                        const table = document.getElementById('dt-responsive');
+                        const rows = table.getElementsByTagName('tr');
+
+                        // Filter rows based on input
+                        let visibleRows = [];
+                        for (let i = 1; i < rows.length; i++) { // Skip header row
+                            const cells = rows[i].getElementsByTagName('td');
+                            let isMatch = false;
+
+                            for (let j = 0; j < cells.length; j++) {
+                                if (cells[j]) {
+                                    const cellValue = cells[j].textContent || cells[j].innerText;
+                                    if (cellValue.toLowerCase().indexOf(filter) > -1) {
+                                        isMatch = true;
+                                        break;
+                                    }
+                                }
+                            }
+                            if (isMatch) {
+                                rows[i].style.display = '';
+                                visibleRows.push(rows[i]);
+                            } else {
+                                rows[i].style.display = 'none';
+                            }
+                        }
+
+                        // Update pagination with filtered rows
+                        updateEntries(visibleRows);
+                    }
+
+                    function updateEntries(filteredRows = null) {
+                        const selector = document.getElementById('entriesSelector');
+                        const maxRows = parseInt(selector.value);
+                        const table = document.getElementById('dt-responsive');
+                        const rows = filteredRows || Array.from(table.getElementsByTagName('tr')).slice(1); // Skip header row
+                        const totalRows = rows.length;
+                        const totalPages = Math.ceil(totalRows / maxRows);
+                        const pagination = document.querySelector('.pagination');
+
+                        // Hide all rows and show only for the current page
+                        rows.forEach((row, index) => {
+                            row.style.display = (index < maxRows) ? '' : 'none';
+                        });
+
+                        // Update pagination buttons
+                        pagination.innerHTML = '';
+
+                        for (let i = 1; i <= totalPages; i++) {
+                            const pageItem = document.createElement('li');
+                            pageItem.className = `paginate_button page-item ${i === 1 ? 'active' : ''}`;
+                            pageItem.innerHTML = `<a href="{% url "incentive_tellicaller" %}" class="page-link" onclick="goToPage(${i}, ${maxRows}, ${totalRows})">${i}</a>`;
+                            pagination.appendChild(pageItem);
+                        }
+                    }
+
+                    function goToPage(pageNumber, maxRows, totalRows) {
+                        const table = document.getElementById('dt-responsive');
+                        const rows = Array.from(table.getElementsByTagName('tr')).slice(1); // Skip header row
+
+                        // Show rows for the selected page
+                        rows.forEach((row, index) => {
+                            row.style.display =
+                                index >= (pageNumber - 1) * maxRows && index < pageNumber * maxRows ?
+                                '' :
+                                'none';
+                        });
+
+                        // Update pagination active state
+                        const pagination = document.querySelector('.pagination');
+                        const pageItems = pagination.getElementsByTagName('li');
+                        Array.from(pageItems).forEach((item, index) => {
+                            item.className = `paginate_button page-item ${index === pageNumber - 1 ? 'active' : ''}`;
+                        });
+
+                        // Update the visible range information
+                        const startEntry = Math.min((pageNumber - 1) * maxRows + 1, totalRows);
+                        const endEntry = Math.min(pageNumber * maxRows, totalRows);
+                        document.getElementById('startEntry').textContent = startEntry;
+                        document.getElementById('endEntry').textContent = endEntry;
+                        document.getElementById('totalEntries').textContent = totalRows;
+                    }
+
+                    window.onload = () => updateEntries();
+                </script>
+
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.page-section -->
+
+    <style>
+        #dt-responsive th,
+        #dt-responsive td {
+            word-wrap: break-word;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+
+        #dt-responsive {
+            table-layout: fixed;
+        }
+    </style>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastr/build/toastr.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastr/build/toastr.min.css" />
+  {% if messages %}
+  {% for message in messages %}
+    <script>
+      let val1 = "{{ message|escapejs }}";  
+      let messageTag = "{{ message.tags }}"; 
+      console.log(messageTag)
+      if (messageTag.toLowerCase() === 'success' || val1.toLowerCase().indexOf('success') !== -1 || val1.toLowerCase().indexOf('successfully') !== -1) {
+        toastr.success("{{ message }}");
+        console.log('Message indicates success');
+      }
+      else if (messageTag.toLowerCase() === 'error') {
+        toastr.error("{{ message }}", 'Error');
+        console.log('Message indicates error');
+      }
+    </script>
+  {% endfor %}
+{% endif %}
+    <script>
+        $(document).ready(function() {
+
+            $('#list').DataTable();
+
+
+            $('.view_pancard').click(function() {
+                uni_modal("Branch's Details", "pancard_view.php?id=" + $(this).data('id'), "large");
+            });
+
+
+            $('.delete_estimate').click(function() {
+                _conf("Are you sure to delete this estimate?", "save_applications_delete", [$(this).data('id')]);
+            });
+        });
+
+
+        function _conf(message, callback, args) {
+            if (confirm(message)) {
+                window[callback].apply(this, args);
+            }
+        }
+
+
+        function save_applications_delete(id) {
+            if (!confirm("Are you sure you want to delete this?")) {
+                return;
+            }
+
+
+            start_load();
+
+
+            $.ajax({
+                url: 'ajax.php?action=save_manager_delete',
+                method: 'POST',
+                data: {
+                    id: id
+                },
+                success: function(resp) {
+
+                    console.log("Response: ", resp);
+
+                    if (resp == 1) {
+                        toastr.success("Data successfully deleted", 'Success');
+                        setTimeout(function() {
+                            location.reload();
+                        }, 1500);
+                    } else {
+                        toastr.error("Failed to delete data. Please try again.", 'Error');
+                    }
+                },
+                error: function(xhr, status, error) {
+
+                    console.error("Error: ", error);
+                    toastr.error("An error occurred while deleting data.", 'Error');
+                },
+                complete: function() {
+
+                    end_load();
+                }
+            });
+        }
+
+
+        function start_load() {
+            console.log("Loading started...");
+
+        }
+
+        function end_load() {
+            console.log("Loading ended...");
+
+        }
+    </script>
+{% endblock content %}

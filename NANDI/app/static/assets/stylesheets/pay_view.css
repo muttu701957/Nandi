@@ -1,0 +1,43 @@
+.address{
+    text-align:left;
+    font-size:medium;
+    padding:20px 0px ;
+  }
+  .reciept-page{
+    border:solid 2px black;
+    padding:20px;
+    padding-top:10px;
+  }
+  .header{
+    padding:10px;
+  }
+  .address-span{
+      font-weight:bold;
+  }
+  hr{
+    border:solid 1px lightgrey;
+    margin-bottom:10px;
+    margin-top:10px
+  }
+  .recipts{
+    padding:1px 5px 1.5px;
+  }
+  label{
+    margin:0px 0px 0px;
+  }
+  .label-feild{
+    font-weight:bold;
+  }
+  .output-box{
+    padding:20px 10px 30px;
+  }
+  .output-box input{
+    padding:12px 0px  12px;
+    border:solid 2px black;
+  }
+  .reciept-footer{
+    padding:10px 25px 10px
+  }
+  .reciept-footer h2{
+    color:lightgrey
+  }

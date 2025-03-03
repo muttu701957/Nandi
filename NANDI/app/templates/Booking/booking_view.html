@@ -1,0 +1,189 @@
+{% extends "Main/index.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'assets\stylesheets\book_view.css' %}">
+<div class="card card-fluid">
+    <div class="header-main">
+      <div class="row mb-5">
+        <div class="page-title col-sm-6"><h2 class="tit">APPLICATION FOR BOOKING</h2></div>
+        <div class="col-sm-6" style="text-align:right"><img src="{% static 'assets\images\download.png' %}" alt="No"></div>
+      </div>
+      
+      <div class="row mb-5">
+        <div class="col-sm-6"><p class="appno"><strong>Application No : <span style="color:red;font-family: Lucida Console, Monospace;">{{form.id}}</span></strong></p></div>
+        <div class="col-sm-6"><p class="ml-6" id="subhead"><strong>Date : <span style="color:red;font-family: Lucida Console, Monospace;">{{form.dt}}</span></strong></p></div>
+      </div>
+    </div>
+    <div class="form-group row" style="margin-bottom:5px;">
+        <label for="" class="col-sm-3 col-form-label" style="font-weight:normal;">Smt/Shri :</label>
+        <div class="col-sm-9">
+          <input style="border:solid 1.5px black;font-weight:bold;border-radius:0px" type="text" class="form-control" value="{{form.fname}}" id="inputField" placeholder="Enter text" readonly>
+        </div>
+      </div>
+      <div class="form-group row" style="margin-bottom:5px;">
+        <label for="" class="col-sm-3 col-form-label" style="font-weight:normal;">S/o D/o W/o  :</label>
+        <div class="col-sm-9">
+          <input style="border:solid 1.5px black;font-weight:bold;border-radius:0px" type="text" class="form-control" value="{{form.mname}}" id="inputField" placeholder="Enter text" readonly>
+        </div>
+      </div>    
+      <div class="form-group row" style="margin-bottom:5px;">
+        <label for="" class="col-sm-3 col-form-label " style="font-weight:normal;">DOB :</label>
+        <div class="col-sm-3">
+          <input style="border:solid 1.5px black;font-weight:bold;border-radius:0px" type="text" class="form-control" id="inputField" value="{{form.dob}}" placeholder="Enter text"  readonly>
+        </div>
+        <label for="" class="col-sm-2 col-form-label" style="font-weight:normal;">Age :</label>
+        <div class="col-sm-4">
+            <input style="border:solid 1.5px black;font-weight:bold;border-radius:0px" type="text" class="form-control" id="inputField" value="{{form.age}}" placeholder="Enter text"  readonly>
+        </div>
+      </div>
+      <div class="form-group row" style="margin-bottom:5px;">
+        <label for="" class="col-sm-3 col-form-label" style="font-weight:normal;">Occupation :</label>
+        <div class="col-sm-9">
+          <input style="border:solid 1.5px black;font-weight:bold;border-radius:0px" type="text" class="form-control" id="inputField" value="{{form.occupation}}" placeholder="Enter text" readonly>
+        </div>
+      </div> 
+      <div class="form-group row" style="margin-bottom:5px;">
+        <label for="" class="col-sm-3 col-form-label" style="font-weight:normal;">Present Address:</label>
+        <div class="col-sm-9">
+          <input style="border:solid 1.5px black;font-weight:bold;border-radius:0px" type="text" class="form-control" id="inputField" value="{{form.raddress}}" placeholder="Enter text" readonly>
+        </div>
+      </div> 
+      <div class="form-group row" style="margin-bottom:5px;">
+        <label for="" class="col-sm-3 col-form-label" style="font-weight:normal;">Permanent Address :</label>
+        <div class="col-sm-9">
+          <input style="border:solid 1.5px black;font-weight:bold;border-radius:0px" type="text" class="form-control" id="inputField" value="{{form.paddress}}" placeholder="Enter text" readonly>
+        </div>
+      </div> 
+      <div class="form-group row" style="margin-bottom:5px;">
+        <label for="" class="col-sm-3 col-form-label" style="font-weight:normal;">Name of the Nominee :</label>
+        <div class="col-sm-9">
+          <input style="border:solid 1.5px black;font-weight:bold;border-radius:0px" type="text" class="form-control" id="inputField" value="{{form.nam}}" placeholder="Enter text" readonly>
+        </div>
+      </div> 
+      <div class="form-group row" style="margin-bottom:5px;">
+        <label for="" class="col-sm-3 col-form-label" style="font-weight:normal;">Relationship :</label>
+        <div class="col-sm-9">
+          <input style="border:solid 1.5px black;font-weight:bold;border-radius:0px" type="text" class="form-control" id="inputField" value="{{form.relation}}" placeholder="Enter text" readonly>
+        </div>
+      </div> 
+      <div class="form-group row" style="margin-bottom:5px;">
+        <label for="" class="col-sm-3 col-form-label" style="font-weight:normal;">Draft/Cheque No :</label>
+        <div class="col-sm-9">
+          <input style="border:solid 1.5px black;font-weight:bold;border-radius:0px" type="text" class="form-control" id="inputField" placeholder="Enter text" value="{{form.remark}}" readonly>
+        </div>
+      </div> 
+      <div class="form-group row" style="margin-bottom:5px;">
+        <label for="" class="col-sm-3 col-form-label" style="font-weight:normal;">Drawn on :</label>
+        <div class="col-sm-9">
+          <input style="border:solid 1.5px black;font-weight:bold;border-radius:0px" type="text" class="form-control" id="inputField" value="{{form.p_mode}}" placeholder="Enter text" readonly>
+        </div>
+      </div>
+      <div class="form-group row" style="margin-bottom:5px;">
+        <label for="" class="col-sm-3 col-form-label" style="font-weight:normal;">Project Title :</label>
+        <div class="col-sm-9">
+          <input style="border:solid 1.5px black;font-weight:bold;border-radius:0px" type="text" class="form-control" id="inputField" value="{{form.p_name}}" placeholder="Enter text" readonly>
+        </div>
+      </div>
+      <div class="form-group row" style="margin-bottom:5px;">
+        <label for="" class="col-sm-3 col-form-label " style="font-weight:normal;">Flat/Plot No :</label>
+        <div class="col-sm-1">
+          <input style="border:solid 1.5px black;font-weight:bold;border-radius:0px" type="text" class="form-control" id="inputField" value="{{form.flt}}" placeholder="Enter text"  readonly>
+        </div>
+        <label for="" class="col-sm-2 col-form-label" style="font-weight:normal;">Size (Flat/Plot) :</label>
+        <div class="col-sm-2">
+            <input style="border:solid 1.5px black;font-weight:bold;border-radius:0px" type="text" class="form-control" id="inputField" value="{{form.sqft}}" placeholder="Enter text"  readonly>
+        </div>
+        <label for="" class="col-sm-2 col-form-label" style="font-weight:normal;">Rate (Flat, plot/Sq.ft): :</label>
+        <div class="col-sm-2">
+            <input style="border:solid 1.5px black;font-weight:bold;border-radius:0px" type="text" class="form-control" id="inputField" placeholder="Enter text" value="{{form.tamount}}" readonly>
+        </div>
+      </div>
+      <div class="form-group row" style="margin-bottom:5px;">
+        <label for="" class="col-sm-3 col-form-label" style="font-weight:normal;">Mobile No :</label>
+        <div class="col-sm-9">
+          <input style="border:solid 1.5px black;font-weight:bold;border-radius:0px" type="text" class="form-control" id="inputField" placeholder="Enter text" value="{{form.ph}}" readonly>
+        </div>
+      </div>
+      <table  style="margin-top:5px;">
+        <thead>
+          <tr>
+            <th>SL.No</th>
+            <th>MODE OF PAYMENT</th>
+            <th>AMOUNT</th> 
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>{{form.p_mode}}</td>
+            <td>{{form.book_amt}}</td>    
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>    
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>    
+          </tr>
+        </tbody>
+      </table>
+      <hr>
+      <div>
+        <p class="Declaration">Declaration: I/We read and understood the rules & regulations & abide by the same. The information furnished above is true & correct to the best of my knowledge.</p>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 text-start" style="padding:20px 20px 0px">
+          <p><hr style="border:solid 1px black;"><center>Signature of the Applicant</center></p>
+        </div>
+        <div class="col-sm-6 text-end" style="padding:20px 20px 0px">
+          <p style="padding-left:12px 0px 12px 0px"><hr style="border:solid 1px black;" ><center>Signature of the Marketing Manager</center></p>
+        </div>
+      </div>
+      <hr>
+      <div>
+        <p>Shop No 4 Second Flour Steller Mall PB Road JG College Of Commerce Beside Vidyanagar Hubballi Karnataka 580-021</p>
+      </div>
+</div>
+<div class="page-break"></div>
+<div class="card card-fluid" id="card1">
+  <center><p id="hide" class="pb-4">Terms And Condition</p></center>
+  <div class="subhead">
+    <h2>Terms And Condition</h2>
+  </div>
+  <div class="termlist">
+    <ul style="font-weight:normal;">
+        <li>The Plots/Flats will be registered on payment of total cost. Registration charges will be borne by the Purchaser Extra cost for additional Sq Ft. shall be paid by the purchaser.</li>
+        <li>The company is not responsible in any manner for payment made without company authorization. A valid receipt signed by the authorized</li>
+        <li>signatory is to be obtained upon making the payment.</li>
+        <li>Corner plots will be charged 10% extra & main road facing plots, park facing plots, deluxe plots will be charged extra.</li>
+        <li>Maximum time period to pay the said down payment is 10 days. In case the payment is not done, the company holds the right to cancel the booking</li>
+        <li>15% cancellation charges will be applied for the cancellation of booking on the total paid amount & amount will be refunded after 90 days of the cancellation request received in writing by the purchaser.</li>
+        <li>The company reserves the right to take a new member in place of the defaulter and reserves the right to increase the cost of any plot for a new member.</li>
+        <li>The company will not be responsible for any delay or inconvenience or loss caused due to the act of government agencies or nature of unforeseen circumstances which is beyond the control of the company.</li>
+        <li>The company has the right to cancel the booking and refund the amount within 90 days without any intimation.</li>
+        <li>All legal transactions with respect to "SHRI DURGA DEVELOPERS & PROMOTERS" are subject to Hubli jurisdiction only.</li>
+        <li>Cheques or Demand drafts should be issued in favor of SHRI DURGA DEVELOPERS & PROMOTERS only.</li>
+        <li>No person is authorized to make any promise or commitment other than those mentioned in the above terms and conditions.</li>
+        <li>Due to change in the plan because of government agencies or decisions by the company, the plot number facing and location may change.</li>
+        <li>If any type of Tax or GST, etc., shall be paid by the purchaser.</li>
+        <li>Parking charges and HESCOM charges will be charged extra.</li>
+        <li>Declaration : I/we have read and understood the rules and regulations and abide by the same. The information furnished above is true and correct to the best of my knowledge.</li>
+    </ul>
+  </div>
+  <div class="row" style="font-weight:normal;">
+    <div class="col-sm-4 text-start" style="padding:97px 20px 0px">
+      <p><hr style="border:solid 1px black;"><br><center>Applicant Name and Signature</center></p>
+  </div>
+    <div class="col-sm-4 text-end" style="padding:97px 20px 0px">
+      <p style="padding-left:12px 0px 12px 0px"><hr style="border:solid 1px black;" ><br><center>General Manager of Marketing Name & Signature</center></p>
+    </div>
+    <div class="col-sm-4 text-end" style="padding:97px 20px 0px">
+      <p style="padding-left:12px 0px 12px 0px"><hr style="border:solid 1px black;" ><br><center>Authorised signatory Name & Signature</center></p>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
