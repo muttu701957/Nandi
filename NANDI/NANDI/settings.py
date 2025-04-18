@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-zi0=%tuom8(a6#3p0kkam=6fyk*o0+%m%ut))&2i$q5dxjoi&4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -77,11 +77,11 @@ WSGI_APPLICATION = 'NANDI.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mydatabase',
-        'USER': 'root',
-        'PASSWORD':'',
-        'HOST': 'localhost',
-        'PORT': '3306'
+        'NAME': 'nandi_db',
+        'USER': 'nandi_user',
+        'PASSWORD': 'nandi_pass',
+        'HOST': 'mysql-container',   # This should match the container name if using Docker Compose
+        'PORT': '3306',
         }
 }
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
